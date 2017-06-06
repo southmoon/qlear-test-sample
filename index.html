@@ -50,7 +50,7 @@
 <body>
   <div id="cells">
     <div class="row">
-      <div class="top cell"></div>
+      <div class="top cell rat"></div>
       <div class="top bottom right cell"></div>
       <div class="top left cell"></div>
       <div class="top bottom cell"></div>
@@ -490,6 +490,80 @@
       <div class="bottom cell"></div>
     </div>
   </div>
+  <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+window.onload = function(){
+    //if(document.getElementsByClassName("cell")) {
+        //var divs = document.getElementsByTagName("div");
+        var  divs = document.getElementsByClassName("cell");
+    //console.log(divs);
+    //divs[10].backgroundColor = "#FF0000";
+    // }
+    var x = 0;
+//    classes = divs[x].className;
+//    console.log(classes);
+    document.onkeydown = function(e){
+        var m = e || window.event;
+        if (m.keyCode == 39){//right
+            //divs[10].addClass("bg-color");
+            if(x < 399){
+//                if(!$("div[class*=right]")) {
+                if($(divs[x]).hasClass("right")) {
+                    x = x;
+                }else{
+                    $(divs[x]).removeClass("rat");
+                    $(divs[x + 1]).addClass("rat");
+                    x = x + 1;
+                }
+            }else{
+                x = 399;
+            }
+        }
+        if (m.keyCode == 37){//left
+            //divs[10].addClass("bg-color");
+            if(x> 0){
+                if($(divs[x]).hasClass("left")) {
+                    x = x;
+                }else {
+                    $(divs[x]).removeClass("rat");
+                    $(divs[x - 1]).addClass("rat");
+                    x = x - 1;
+                }
+            }else{
+                x = 0;
+            }
+        }
+        if (m.keyCode == 38){//up
+            //divs[10].addClass("bg-color");
+            if((x > 19)){
+                if($(divs[x]).hasClass("top")) {
+                    x = x;
+                }else {
+                    $(divs[x]).removeClass("rat");
+                    $(divs[x - 20]).addClass("rat");
+                    x = x - 20;
+                }
+            }else{
+                x = x;
+            }
+        }
+        if (m.keyCode == 40){//down
+            //divs[10].addClass("bg-color");
+            if((x < 380)){
+                if($(divs[x]).hasClass("bottom")) {
+                    x = x;
+                }else {
+                    $(divs[x]).removeClass("rat");
+                    $(divs[x + 20]).addClass("rat");
+                    x = x + 20;
+                }
+            }else{
+                x = x;
+            }
+        }
+    }
+}
+</script>
 </body>
 
 </html>
